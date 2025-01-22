@@ -15,7 +15,7 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(express.json())
-app.use(cors({origin: ['http://localhost:5173', "https://podcaster-client.vercel.app/"], credentials: true}))
+app.use(cors({origin: ['http://localhost:5173', "https://podcaster-client.vercel.app/", "https://podcaster-lime-seven.vercel.app/api/v1/users/check-cookie"], credentials: true}))
 app.use(cookieParser())
 app.use("/uploads", express.static("uploads"))
 
