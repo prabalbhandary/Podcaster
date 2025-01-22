@@ -12,10 +12,10 @@ const PodcastCard = ({ item }) => {
       e.preventDefault();
       dispatch(audioPlayerActions.setDiv());
       dispatch(
-        audioPlayerActions.changeImg(`http://localhost:4000/${item.frontImage}`)
+        audioPlayerActions.changeImg(`https://podcaster-lime-seven.vercel.app/${item.frontImage}`)
       );
       dispatch(
-        audioPlayerActions.changeSong(`http://localhost:4000/${item.audioFile}`)
+        audioPlayerActions.changeSong(`https://podcaster-lime-seven.vercel.app/${item.audioFile}`)
       );
     }
   };
@@ -27,7 +27,7 @@ const PodcastCard = ({ item }) => {
       >
         <div>
           <img
-            src={`http://localhost:4000/${item.frontImage}`}
+            src={`https://podcaster-lime-seven.vercel.app/${item.frontImage}`}
             alt=""
             className="rounded size-[42vh] object-cover"
           />

@@ -10,7 +10,7 @@ const CategoriesPage = () => {
   useEffect(() => {
     const fetchPodcastByCategory = async() => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/v1/podcasts/category/${cat}`, {withCredentials: true})
+        const response = await axios.get(`https://podcaster-lime-seven.vercel.app/api/v1/podcasts/category/${cat}`, {withCredentials: true})
         setPodcasts(response.data.podcasts)
         toast.success(response.data.message)
       } catch (error) {

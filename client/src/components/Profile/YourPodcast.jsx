@@ -10,7 +10,7 @@ const YourPodcast = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/podcasts/get-user-podcast",
+          "https://podcaster-lime-seven.vercel.app/api/v1/podcasts/get-user-podcast",
           { withCredentials: true }
         );
         setPodcasts(response.data.data);
