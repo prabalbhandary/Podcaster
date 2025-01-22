@@ -51,7 +51,7 @@ const InputPodcast = () => {
     data.append('frontImage', frontImage)
     data.append('audioFile', audioFile)
     try {
-      const response = await axios.post("https://podcaster-server.vercel.app/api/v1/podcasts/add", data, {
+      const response = await axios.post("http://localhost:4000/api/v1/podcasts/add", data, {
         headers: {
           "Content-Type": "multipart/form-data"
         },

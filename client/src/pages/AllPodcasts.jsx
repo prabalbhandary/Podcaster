@@ -9,7 +9,7 @@ const AllPodcasts = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "https://podcaster-server.vercel.app/api/v1/podcasts/get-podcasts",
+          "http://localhost:4000/api/v1/podcasts/get-podcasts",
           { withCredentials: true }
         );
         setPodcasts(response.data.podcasts);
