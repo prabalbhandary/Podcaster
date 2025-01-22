@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const fetch = async() => {
       try {
-        const response = await axios.get("http://localhost:4000/api/v1/users/check-cookie", {withCredentials: true})
+        const response = await axios.get("https://podcaster-server.vercel.app/api/v1/users/check-cookie", {withCredentials: true})
         if(response.data.message){
           dispatch(authActions.login())
           toast.success(response.data.message)
