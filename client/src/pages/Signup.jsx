@@ -23,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://podcaster-lime-seven.vercel.app/api/v1/users/register",
+        "http://localhost:4000/api/v1/users/register",
         values
       );
       toast.success(response.data.message);

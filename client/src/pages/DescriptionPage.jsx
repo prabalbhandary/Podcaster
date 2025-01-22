@@ -10,7 +10,7 @@ const DescriptionPage = () => {
     const fetchPodcastById = async () => {
       try {
         const response = await axios.get(
-          `https://podcaster-lime-seven.vercel.app/api/v1/podcasts/get-podcasts/${id}`,
+          `http://localhost:4000/api/v1/podcasts/get-podcasts/${id}`,
           { withCredentials: true }
         );
         setPodcasts(response.data.podcast);
@@ -27,7 +27,7 @@ const DescriptionPage = () => {
         <>
           <div className="w-2/6 items-center justify-center md:justify-start md:items-start">
             <img
-              src={`https://podcaster-lime-seven.vercel.app/${podcasts.frontImage}`}
+              src={`http://localhost:4000/${podcasts.frontImage}`}
               alt="Image"
               className="rounded w-full h-[50vh] object-cover"
             />

@@ -13,7 +13,7 @@ const Header = () => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          "https://podcaster-lime-seven.vercel.app/api/v1/users/user-details",
+          "http://localhost:4000/api/v1/users/user-details",
           { withCredentials: true }
         );
         if (response.data) {
@@ -29,7 +29,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "https://podcaster-lime-seven.vercel.app/api/v1/users/logout",
+        "http://localhost:4000/api/v1/users/logout",
         { withCredentials: true }
       );
       if (response.data) {
