@@ -19,6 +19,10 @@ app.use(cors({origin: ['http://localhost:5173', "https://podcaster-client.vercel
 app.use(cookieParser())
 app.use("/uploads", express.static("uploads"))
 
+app.get("/", (req, res) => {
+    res.send("Hello from Server");
+})
+
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/categories", categoryRoutes)
 app.use("/api/v1/podcasts", podcastRoutes)
