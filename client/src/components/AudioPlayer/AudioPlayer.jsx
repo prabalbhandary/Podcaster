@@ -30,14 +30,17 @@ const AudioPlayer = () => {
   };
 
   const handlePlayPodcast = () => {
-    setIsPlaying(!isPlaying);
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+    if (audioRef.current) {
+      if (audioRef.current.paused) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      } else {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
     }
   };
-
+  
   const handleTimeUpdate = () => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
@@ -80,26 +83,22 @@ const AudioPlayer = () => {
 
   useEffect(() => {
     const currentAudio = audioRef.current;
-
+  
+    const updateIsPlaying = () => setIsPlaying(!currentAudio.paused);
+  
     if (currentAudio) {
-      currentAudio.addEventListener("timeupdate", handleTimeUpdate);
-      currentAudio.addEventListener("loadedmetadata", handleLoadedMetaData);
-      currentAudio.addEventListener("ended", handleAudioEnded);
-
-      if (!isPlaying && currentAudio.paused && songPath) {
-        currentAudio.play();
-        setIsPlaying(true);
-      }
+      currentAudio.addEventListener("play", updateIsPlaying);
+      currentAudio.addEventListener("pause", updateIsPlaying);
     }
-
+  
     return () => {
       if (currentAudio) {
-        currentAudio.removeEventListener("timeupdate", handleTimeUpdate);
-        currentAudio.removeEventListener("loadedmetadata", handleLoadedMetaData);
-        currentAudio.removeEventListener("ended", handleAudioEnded);
+        currentAudio.removeEventListener("play", updateIsPlaying);
+        currentAudio.removeEventListener("pause", updateIsPlaying);
       }
     };
-  }, [songPath, isPlaying]);
+  }, []);
+  
 
   return (
     <div
