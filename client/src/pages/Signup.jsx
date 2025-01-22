@@ -23,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/users/register",
+        "https://podcaster-server.vercel.app/api/v1/users/register",
         values
       );
       toast.success(response.data.message);
