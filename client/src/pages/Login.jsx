@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/users/login",
+        "https://podcaster-server.vercel.app/api/v1/users/login",
         values,
         { withCredentials: true }
       );
