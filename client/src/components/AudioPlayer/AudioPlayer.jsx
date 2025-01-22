@@ -84,20 +84,22 @@ const AudioPlayer = () => {
     if (currentAudio) {
       currentAudio.addEventListener("timeupdate", handleTimeUpdate);
       currentAudio.addEventListener("loadedmetadata", handleLoadedMetaData);
-      currentAudio.addEventListener("ended", handleAudioEnded); // Listen for the ended event
+      currentAudio.addEventListener("ended", handleAudioEnded);
+
+      if (!isPlaying && currentAudio.paused && songPath) {
+        currentAudio.play();
+        setIsPlaying(true);
+      }
     }
 
     return () => {
       if (currentAudio) {
         currentAudio.removeEventListener("timeupdate", handleTimeUpdate);
-        currentAudio.removeEventListener(
-          "loadedmetadata",
-          handleLoadedMetaData
-        );
-        currentAudio.removeEventListener("ended", handleAudioEnded); // Clean up event listener
+        currentAudio.removeEventListener("loadedmetadata", handleLoadedMetaData);
+        currentAudio.removeEventListener("ended", handleAudioEnded);
       }
     };
-  }, [songPath]);
+  }, [songPath, isPlaying]);
 
   return (
     <div
@@ -144,7 +146,7 @@ const AudioPlayer = () => {
           <ImCross />
         </button>
       </div>
-      <audio ref={audioRef} src={songPath} />
+      <audio ref={audioRef} src={songPath} autoPlay />
     </div>
   );
 };
